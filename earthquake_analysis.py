@@ -25,7 +25,7 @@ df = load_data()
 
 # Show the raw data
 if not df.empty:
-    st.subheader("📄 Raw Earthquake Data")
+    st.subheader(" Raw Earthquake Data")
     st.dataframe(df.head())
 
     # Summary statistics
@@ -33,7 +33,7 @@ if not df.empty:
     st.write(df.describe())
 
     # Filter by Magnitude
-    st.subheader("🔍 Filter by Magnitude")
+    st.subheader(" Filter by Magnitude")
     min_mag, max_mag = st.slider("Select magnitude range", 0.0, 10.0, (4.0, 7.0), 0.1)
     filtered_df = df[(df["Magnitude"] >= min_mag) & (df["Magnitude"] <= max_mag)]
 
@@ -41,7 +41,7 @@ if not df.empty:
     st.dataframe(filtered_df)
 
     # Map of Earthquakes
-    st.subheader("🗺️ Earthquake Locations Map")
+    st.subheader(" Earthquake Locations Map")
     fig = px.scatter_geo(filtered_df,
                          lat="Latitude",
                          lon="Longitude",
@@ -53,7 +53,7 @@ if not df.empty:
     st.plotly_chart(fig, use_container_width=True)
 
     # Histogram of Magnitudes
-    st.subheader("📈 Earthquake Magnitude Distribution")
+    st.subheader("Earthquake Magnitude Distribution")
     fig2 = px.histogram(filtered_df, x="Magnitude", nbins=20, color="Region", title="Magnitude Histogram")
     st.plotly_chart(fig2)
 
