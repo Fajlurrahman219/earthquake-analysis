@@ -6,10 +6,10 @@ import plotly.express as px
 import os
 
 # Set page settings
-st.set_page_config(page_title="🌍 Earthquake Dashboard", layout="wide")
+st.set_page_config(page_title=" Earthquake Dashboard", layout="wide")
 
 # Title
-st.title("🌍 Global Earthquake Data Analysis")
+st.title("Global Earthquake Data Analysis")
 
 # Load the data
 @st.cache_data
@@ -18,7 +18,7 @@ def load_data():
     if os.path.exists(file_path):
         return pd.read_csv(file_path, parse_dates=["Date"])
     else:
-        st.error("❌ 'earthquake_data.csv' file not found.")
+        st.error(" 'earthquake_data.csv' file not found.")
         return pd.DataFrame()
 
 df = load_data()
@@ -29,7 +29,7 @@ if not df.empty:
     st.dataframe(df.head())
 
     # Summary statistics
-    st.subheader("📊 Summary Statistics")
+    st.subheader(" Summary Statistics")
     st.write(df.describe())
 
     # Filter by Magnitude
@@ -58,7 +58,7 @@ if not df.empty:
     st.plotly_chart(fig2)
 
     # Earthquake Count by Region
-    st.subheader("📍 Earthquake Count by Region")
+    st.subheader(" Earthquake Count by Region")
     region_count = filtered_df["Region"].value_counts().reset_index()
     region_count.columns = ["Region", "Count"]
     fig3 = px.bar(region_count, x="Region", y="Count", title="Earthquake Frequency by Region")
